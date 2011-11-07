@@ -1,0 +1,419 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0D02A75B145AAB08005D2579 /* libosgwTools.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D02A75A145AAB08005D2579 /* libosgwTools.dylib */; };
+		0D2632201442F8F500F31F1B /* vrjuggler.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0D26321F1442F8F500F31F1B /* vrjuggler.plist */; };
+		0D47BF5414431E7500BD1150 /* libosg.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D47BF5214431E7500BD1150 /* libosg.dylib */; };
+		0D47BF5514431E7500BD1150 /* libosgDB.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D47BF5314431E7500BD1150 /* libosgDB.dylib */; };
+		0D47BF5F14431EE600BD1150 /* libosgUtil.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D47BF5E14431EE600BD1150 /* libosgUtil.dylib */; };
+		0D47BF6314431F3700BD1150 /* libjccl-1_4.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D47BF6214431F3700BD1150 /* libjccl-1_4.dylib */; };
+		0D47BF6514431F5E00BD1150 /* libgadget-2_0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D47BF6414431F5E00BD1150 /* libgadget-2_0.dylib */; };
+		0D47BF6814431F9000BD1150 /* libvrj_ogl-3_0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D47BF6614431F9000BD1150 /* libvrj_ogl-3_0.dylib */; };
+		0D47BF6914431F9000BD1150 /* libvrj-3_0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D47BF6714431F9000BD1150 /* libvrj-3_0.dylib */; };
+		0D47BF6B14431FA200BD1150 /* libvpr-2_2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D47BF6A14431FA200BD1150 /* libvpr-2_2.dylib */; };
+		0D47BF6F14431FF700BD1150 /* libOpenThreads.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D47BF6E14431FF700BD1150 /* libOpenThreads.dylib */; };
+		0D4E40DE1465212300067968 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D4E40D91465212300067968 /* main.cpp */; };
+		0D4E40DF1465212300067968 /* VrjOsgBullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D4E40DB1465212300067968 /* VrjOsgBullet.cpp */; };
+		0D4E41E41467285000067968 /* libBulletCollision.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4E41E21467285000067968 /* libBulletCollision.a */; };
+		0D4E41E51467285100067968 /* libBulletDynamics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4E41E31467285000067968 /* libBulletDynamics.a */; };
+		0DD10BF91442FAFE00914068 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DD10BF81442FAFE00914068 /* OpenGL.framework */; };
+		0DD8ABCE1450849500E7F29F /* libosgbCollision.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DD8ABBD1450818600E7F29F /* libosgbCollision.dylib */; };
+		0DD8ABCF1450849500E7F29F /* libosgbDynamics.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DD8ABBE1450818600E7F29F /* libosgbDynamics.dylib */; };
+		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
+		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0D02A75A145AAB08005D2579 /* libosgwTools.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libosgwTools.dylib; path = /usr/local/lib/libosgwTools.dylib; sourceTree = "<absolute>"; };
+		0D26321F1442F8F500F31F1B /* vrjuggler.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = vrjuggler.plist; sourceTree = "<group>"; };
+		0D47BF5214431E7500BD1150 /* libosg.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libosg.dylib; path = /usr/local/lib/libosg.dylib; sourceTree = "<absolute>"; };
+		0D47BF5314431E7500BD1150 /* libosgDB.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libosgDB.dylib; path = /usr/local/lib/libosgDB.dylib; sourceTree = "<absolute>"; };
+		0D47BF5E14431EE600BD1150 /* libosgUtil.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libosgUtil.dylib; path = /usr/local/lib/libosgUtil.dylib; sourceTree = "<absolute>"; };
+		0D47BF6214431F3700BD1150 /* libjccl-1_4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libjccl-1_4.dylib"; path = "/usr/local/lib/libjccl-1_4.dylib"; sourceTree = "<absolute>"; };
+		0D47BF6414431F5E00BD1150 /* libgadget-2_0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libgadget-2_0.dylib"; path = "/usr/local/lib/libgadget-2_0.dylib"; sourceTree = "<absolute>"; };
+		0D47BF6614431F9000BD1150 /* libvrj_ogl-3_0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libvrj_ogl-3_0.dylib"; path = "/usr/local/lib/libvrj_ogl-3_0.dylib"; sourceTree = "<absolute>"; };
+		0D47BF6714431F9000BD1150 /* libvrj-3_0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libvrj-3_0.dylib"; path = "/usr/local/lib/libvrj-3_0.dylib"; sourceTree = "<absolute>"; };
+		0D47BF6A14431FA200BD1150 /* libvpr-2_2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libvpr-2_2.dylib"; path = "/usr/local/lib/libvpr-2_2.dylib"; sourceTree = "<absolute>"; };
+		0D47BF6E14431FF700BD1150 /* libOpenThreads.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libOpenThreads.dylib; path = /usr/local/lib/libOpenThreads.dylib; sourceTree = "<absolute>"; };
+		0D4E40D91465212300067968 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		0D4E40DA1465212300067968 /* nav.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nav.h; sourceTree = "<group>"; };
+		0D4E40DB1465212300067968 /* VrjOsgBullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VrjOsgBullet.cpp; sourceTree = "<group>"; };
+		0D4E40DC1465212300067968 /* VrjOsgBullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VrjOsgBullet.h; sourceTree = "<group>"; };
+		0D4E41E21467285000067968 /* libBulletCollision.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBulletCollision.a; path = /usr/local/Cellar/bullet/2.79/lib/libBulletCollision.a; sourceTree = "<absolute>"; };
+		0D4E41E31467285000067968 /* libBulletDynamics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBulletDynamics.a; path = /usr/local/Cellar/bullet/2.79/lib/libBulletDynamics.a; sourceTree = "<absolute>"; };
+		0DD10BF81442FAFE00914068 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		0DD8ABBD1450818600E7F29F /* libosgbCollision.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libosgbCollision.dylib; path = /usr/local/lib/libosgbCollision.dylib; sourceTree = "<absolute>"; };
+		0DD8ABBE1450818600E7F29F /* libosgbDynamics.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libosgbDynamics.dylib; path = /usr/local/lib/libosgbDynamics.dylib; sourceTree = "<absolute>"; };
+		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		8D1107310486CEB800E47090 /* VrjOsgBullet-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "VrjOsgBullet-Info.plist"; sourceTree = "<group>"; };
+		8D1107320486CEB800E47090 /* VrjOsgBullet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VrjOsgBullet.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D11072E0486CEB800E47090 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				0DD10BF91442FAFE00914068 /* OpenGL.framework in Frameworks */,
+				0D47BF5414431E7500BD1150 /* libosg.dylib in Frameworks */,
+				0D47BF5514431E7500BD1150 /* libosgDB.dylib in Frameworks */,
+				0D47BF5F14431EE600BD1150 /* libosgUtil.dylib in Frameworks */,
+				0D47BF6314431F3700BD1150 /* libjccl-1_4.dylib in Frameworks */,
+				0D47BF6514431F5E00BD1150 /* libgadget-2_0.dylib in Frameworks */,
+				0D47BF6814431F9000BD1150 /* libvrj_ogl-3_0.dylib in Frameworks */,
+				0D47BF6914431F9000BD1150 /* libvrj-3_0.dylib in Frameworks */,
+				0D47BF6B14431FA200BD1150 /* libvpr-2_2.dylib in Frameworks */,
+				0D47BF6F14431FF700BD1150 /* libOpenThreads.dylib in Frameworks */,
+				0DD8ABCE1450849500E7F29F /* libosgbCollision.dylib in Frameworks */,
+				0DD8ABCF1450849500E7F29F /* libosgbDynamics.dylib in Frameworks */,
+				0D02A75B145AAB08005D2579 /* libosgwTools.dylib in Frameworks */,
+				0D4E41E41467285000067968 /* libBulletCollision.a in Frameworks */,
+				0D4E41E51467285100067968 /* libBulletDynamics.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		0D47BE9E1442FC6A00BD1150 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				0D4E40D91465212300067968 /* main.cpp */,
+				0D4E40DA1465212300067968 /* nav.h */,
+				0D4E40DB1465212300067968 /* VrjOsgBullet.cpp */,
+				0D4E40DC1465212300067968 /* VrjOsgBullet.h */,
+			);
+			name = src;
+			path = ../../src;
+			sourceTree = SOURCE_ROOT;
+		};
+		0D47BF4914431DF300BD1150 /* vrjuggler */ = {
+			isa = PBXGroup;
+			children = (
+				0D47BF6A14431FA200BD1150 /* libvpr-2_2.dylib */,
+				0D47BF6614431F9000BD1150 /* libvrj_ogl-3_0.dylib */,
+				0D47BF6714431F9000BD1150 /* libvrj-3_0.dylib */,
+				0D47BF6414431F5E00BD1150 /* libgadget-2_0.dylib */,
+				0D47BF6214431F3700BD1150 /* libjccl-1_4.dylib */,
+			);
+			name = vrjuggler;
+			sourceTree = "<group>";
+		};
+		0D47BF5614431E8300BD1150 /* osg */ = {
+			isa = PBXGroup;
+			children = (
+				0D47BF6E14431FF700BD1150 /* libOpenThreads.dylib */,
+				0D47BF5E14431EE600BD1150 /* libosgUtil.dylib */,
+				0D47BF5214431E7500BD1150 /* libosg.dylib */,
+				0D47BF5314431E7500BD1150 /* libosgDB.dylib */,
+			);
+			name = osg;
+			sourceTree = "<group>";
+		};
+		0DD8AB2514506F7C00E7F29F /* bullet */ = {
+			isa = PBXGroup;
+			children = (
+				0D4E41E21467285000067968 /* libBulletCollision.a */,
+				0D4E41E31467285000067968 /* libBulletDynamics.a */,
+			);
+			name = bullet;
+			sourceTree = "<group>";
+		};
+		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0D02A75A145AAB08005D2579 /* libosgwTools.dylib */,
+				0DD8ABBD1450818600E7F29F /* libosgbCollision.dylib */,
+				0DD8ABBE1450818600E7F29F /* libosgbDynamics.dylib */,
+				0DD8AB2514506F7C00E7F29F /* bullet */,
+				0D47BF5614431E8300BD1150 /* osg */,
+				0D47BF4914431DF300BD1150 /* vrjuggler */,
+				0DD10BF81442FAFE00914068 /* OpenGL.framework */,
+				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D1107320486CEB800E47090 /* VrjOsgBullet.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* mimir */ = {
+			isa = PBXGroup;
+			children = (
+				0D47BE9E1442FC6A00BD1150 /* src */,
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = mimir;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0D26321F1442F8F500F31F1B /* vrjuggler.plist */,
+				8D1107310486CEB800E47090 /* VrjOsgBullet-Info.plist */,
+				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
+				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D1107260486CEB800E47090 /* VrjOsgBullet */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "VrjOsgBullet" */;
+			buildPhases = (
+				8D1107290486CEB800E47090 /* Resources */,
+				8D11072C0486CEB800E47090 /* Sources */,
+				8D11072E0486CEB800E47090 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VrjOsgBullet;
+			productInstallPath = "$(HOME)/Applications";
+			productName = mimir;
+			productReference = 8D1107320486CEB800E47090 /* VrjOsgBullet.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "VrjOsgBullet" */;
+			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* mimir */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D1107260486CEB800E47090 /* VrjOsgBullet */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D1107290486CEB800E47090 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
+				0D2632201442F8F500F31F1B /* vrjuggler.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D11072C0486CEB800E47090 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D4E40DE1465212300067968 /* main.cpp in Sources */,
+				0D4E40DF1465212300067968 /* VrjOsgBullet.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				089C165DFE840E0CC02AAC07 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C01FCF4B08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = ../../bin;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = "VrjOsgBullet-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/build/Debug\"",
+					../../lib,
+					/usr/local/Cellar/bullet/2.79/lib,
+				);
+				PRODUCT_NAME = VrjOsgBullet;
+			};
+			name = Debug;
+		};
+		C01FCF4C08A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = "VrjOsgBullet-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/build/Debug\"",
+					/usr/local/Cellar/bullet/2.79/lib,
+				);
+				PRODUCT_NAME = VrjOsgBullet;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_SYMBOL_SEPARATION = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/Cellar/osgbullet/2.0/include,
+					/usr/local/Cellar/osgworks/2.0/include,
+					/usr/local/Cellar/openscenegraph/3.0.1/include,
+					"/usr/local/Cellar/vrjuggler-3.0/3.0.0-1/include/vrjuggler-3.0",
+					"/usr/local/Cellar/vrjuggler-3.0/3.0.0-1/include/gadgeteer-2.0",
+					"/usr/local/Cellar/vrjuggler-3.0/3.0.0-1/include/vpr-2.2",
+					"/usr/local/Cellar/vrjuggler-3.0/3.0.0-1/include/jccl-1.4",
+					"/usr/local/Cellar/gmtl/HEAD/include/gmtl-0.7.0",
+					/usr/local/Cellar/boost/1.47.0/include,
+					"/usr/local/Cellar/cppdom/1.2.0/include/cppdom-1.2.0",
+					/usr/local/Cellar/bullet/2.79/include/bullet,
+					../../src,
+				);
+				INSTALL_PATH = ../../bin;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = NO;
+				SDKROOT = macosx10.6;
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_SYMBOL_SEPARATION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/Cellar/osgbullet/2.0/include,
+					/usr/local/Cellar/osgworks/2.0/include,
+					/usr/local/Cellar/openscenegraph/3.0.1/include,
+					"/usr/local/Cellar/vrjuggler-3.0/3.0.0-1/include/vrjuggler-3.0",
+					"/usr/local/Cellar/vrjuggler-3.0/3.0.0-1/include/gadgeteer-2.0",
+					"/usr/local/Cellar/vrjuggler-3.0/3.0.0-1/include/vpr-2.2",
+					"/usr/local/Cellar/vrjuggler-3.0/3.0.0-1/include/jccl-1.4",
+					"/usr/local/Cellar/gmtl/HEAD/include/gmtl-0.7.0",
+					/usr/local/Cellar/boost/1.47.0/include,
+					"/usr/local/Cellar/cppdom/1.2.0/include/cppdom-1.2.0",
+					/usr/local/Cellar/bullet/2.79/include/bullet,
+					../../src,
+				);
+				INSTALL_PATH = ../../bin;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = NO;
+				SDKROOT = macosx10.6;
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "VrjOsgBullet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4B08A954540054247B /* Debug */,
+				C01FCF4C08A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "VrjOsgBullet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
