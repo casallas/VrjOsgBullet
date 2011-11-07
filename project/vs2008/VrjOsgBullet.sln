@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "osgNav", "VrjOsgBullet.vcproj", "{8346115D-65A0-42F9-859F-77C649F8FD1C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		DebugRt|Win32 = DebugRt|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8346115D-65A0-42F9-859F-77C649F8FD1C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8346115D-65A0-42F9-859F-77C649F8FD1C}.Debug|Win32.Build.0 = Debug|Win32
+		{8346115D-65A0-42F9-859F-77C649F8FD1C}.DebugRt|Win32.ActiveCfg = DebugRt|Win32
+		{8346115D-65A0-42F9-859F-77C649F8FD1C}.DebugRt|Win32.Build.0 = DebugRt|Win32
+		{8346115D-65A0-42F9-859F-77C649F8FD1C}.Release|Win32.ActiveCfg = Release|Win32
+		{8346115D-65A0-42F9-859F-77C649F8FD1C}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
