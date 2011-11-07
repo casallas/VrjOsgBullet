@@ -53,6 +53,8 @@
 #include <btBulletDynamicsCommon.h>
 #include <osgbCollision/GLDebugDrawer.h>
 
+#include "GrabHandler.h"
+
 /**
  * Demonstration vrjuggler+osgBullet application class.
  */
@@ -155,7 +157,7 @@ public:
 		mFileToLoad = filename;
 	}
 	
-protected:
+public:
 	osg::ref_ptr<osg::Group>           mRootNode;
 	osg::ref_ptr<osg::Group>           mNoNav;
 	osg::ref_ptr<osg::MatrixTransform> mNavTrans;
@@ -174,6 +176,8 @@ protected:
 	///Allows to see if the dynamics world matches the scene graph
 	osgbCollision::GLDebugDrawer* mDbgDraw;
 	bool mDebugDisplay;
+
+	ii_vrac::GrabHandler* mGrabHandler;
 	
 #ifdef TWEEK_HAVE_CXX
 	tweek::CorbaManager mCorbaManager;
@@ -182,6 +186,7 @@ protected:
 public:
 	gadget::PositionInterface  mWand;     /**< the wand */
 	gadget::PositionInterface  mHead;     /**< the head */
+	gadget::DigitalInterface   mGrabBtn;  /**< the button assigned for grabbing */
 };
 
 

@@ -95,20 +95,19 @@ void VrjOsgBullet::preFrame()
 	{  
 		diff_time.secf(0.0f);
 	}
-	
+
 	float time_delta = diff_time.secf();
 	
 	mLastPreFrameTime = cur_time;
 	
-	
-	// Get wand data
-	gmtl::Matrix44f wandMatrix = mWand->getData();      // Get the wand matrix
-
 	// Update physics
 	updatePhysics(time_delta);
 	
 	// Update the navigation using the time delta between
 	mNavigator.update(time_delta);
+
+	// Update the grab handler
+	mGrabHandler->handle();
 }
 
 void VrjOsgBullet::bufferPreDraw()
@@ -122,14 +121,19 @@ void VrjOsgBullet::initScene()
 	// Initialize devices
 	const std::string wand("VJWand");
 	const std::string vjhead("VJHead");
+	const std::string grabBtn("VJButton0");
 	
 	mWand.init(wand);
 	mHead.init(vjhead);
+	mGrabBtn.init(grabBtn);
 	
 	// Init physics
 	mDynamicsWorld = initPhysics();
 	// Init the scenegraph
 	initSceneGraph();
+
+	//Init the grab handler
+	mGrabHandler = new ii_vrac::GrabHandler( mDynamicsWorld, this );
 }
 
 btDynamicsWorld* VrjOsgBullet::initPhysics()
