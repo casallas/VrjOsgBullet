@@ -262,7 +262,7 @@
 				OutputFile="$(OutDir)/$(ProjectName).exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="&quot;$(OSGHOME)\lib&quot;;&quot;$(VJ_DEPS_DIR)\lib&quot;;&quot;$(VJ_BASE_DIR)\lib&quot;"
+				AdditionalLibraryDirectories="&quot;$(OSG_ROOT)\lib&quot;;&quot;$(VJ_DEPS_DIR)\lib&quot;;&quot;$(VJ_BASE_DIR)\lib&quot;;&quot;$(BULLET_ROOT)\lib&quot;;&quot;$(OSG_WORKS_ROOT)\lib&quot;;&quot;$(OSG_BULLET_ROOT)\lib&quot;"
 				ProgramDatabaseFile="$(OutDir)/osgNav.pdb"
 				SubSystem="1"
 				RandomizedBaseAddress="1"
