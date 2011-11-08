@@ -61,10 +61,7 @@ class VrjOsgBullet : public vrj::osg::App
 public:
 	VrjOsgBullet(vrj::Kernel* kern, int& argc, char** argv);
 	
-	virtual ~VrjOsgBullet()
-	{
-		/* Do nothing. */ ;
-	}
+	virtual ~VrjOsgBullet();
 	
 	/**
 	 * Execute any initialization needed before the API is started.

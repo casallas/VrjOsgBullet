@@ -46,8 +46,14 @@
 #include <osgbCollision/RefBulletObject.h>
 #include <osgbCollision/Utils.h>
 
+#include <osgbDynamics/TripleBuffer.h>
+#include <osgbDynamics/PhysicsThread.h>
+
 #include <sstream>
 
+osgbDynamics::TripleBuffer tBuf;
+osgbDynamics::MotionStateList msl;
+osgbDynamics::PhysicsThread* pt(NULL);
 
 VrjOsgBullet::VrjOsgBullet(vrj::Kernel* kern, int& argc, char** argv)
 : vrj::osg::App(kern)
@@ -57,6 +63,13 @@ VrjOsgBullet::VrjOsgBullet(vrj::Kernel* kern, int& argc, char** argv)
 	mDebugDisplay = true;
 }
 
+VrjOsgBullet::~VrjOsgBullet()
+{
+	pt->stopPhysics();
+	pt->join();
+	delete pt;
+}
+
 void VrjOsgBullet::updatePhysics(float time_delta)
 {
 	//Start drawing on the debug drawer (if any)
@@ -64,7 +77,7 @@ void VrjOsgBullet::updatePhysics(float time_delta)
 		mDbgDraw->BeginDraw();
 	
 	//Step simulation according to the given time_delta
-	mDynamicsWorld->stepSimulation( time_delta );
+	TripleBufferMotionStateUpdate( msl, &tBuf );
 	
 	//Stop drawing on the debug drawer (if any)
 	if( mDbgDraw != NULL )
@@ -99,11 +112,7 @@ void VrjOsgBullet::preFrame()
 	float time_delta = diff_time.secf();
 	
 	mLastPreFrameTime = cur_time;
-	
-	
-	// Get wand data
-	gmtl::Matrix44f wandMatrix = mWand->getData();      // Get the wand matrix
-
+		
 	// Update physics
 	updatePhysics(time_delta);
 	
@@ -142,9 +151,15 @@ btDynamicsWorld* VrjOsgBullet::initPhysics()
     btVector3 worldAabbMax( 10000, 10000, 10000 );
     btBroadphaseInterface * inter = new btAxisSweep3( worldAabbMin, worldAabbMax, 1000 );
 	
-    btDynamicsWorld * dynamicsWorld = new btDiscreteDynamicsWorld( dispatcher, inter, solver, collisionConfiguration );
+	btDynamicsWorld * dynamicsWorld = new btDiscreteDynamicsWorld( dispatcher, inter, solver, collisionConfiguration );
 	
     dynamicsWorld->setGravity( btVector3( 0, -9.8, 0 ) );
+
+	tBuf.resize( 16384 );
+    pt = new osgbDynamics::PhysicsThread( dynamicsWorld, &tBuf );
+	
+	pt->setProcessorAffinity( 0 );
+    pt->start();
 	
     return( dynamicsWorld );
 }
@@ -226,6 +241,11 @@ btRigidBody* VrjOsgBullet::createObject( osg::Node* node, osg::Group* parent, co
 	cr->_restitution = 1.f;
     btRigidBody* rb = osgbDynamics::createRigidBody( cr.get() );
 	
+	// Set up for multithreading and triple buffering.
+    osgbDynamics::MotionState* motion = static_cast< osgbDynamics::MotionState* >( rb->getMotionState() );
+    motion->registerTripleBuffer( &tBuf );
+    msl.insert( motion );
+		
 	//Save the rigid body as userData of the absoluteModelTransform
     mt->setUserData( new osgbCollision::RefRigidBody( rb ) );
     std::ostringstream id;
