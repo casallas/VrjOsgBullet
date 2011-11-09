@@ -22,10 +22,15 @@
  * (COPYING) and the GNU Lesser General Public License (COPYING.LESSER)
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include <vrj/vrjConfig.h>
 
-#include <VrjOsgBullet.h>
+/**
+ * app-specific includes
+ */
+#include "VrjOsgBulletApp.h"
 
+/**
+ * osg includes
+ */
 #include <osg/Math>
 #include <osg/Geode>
 #include <osg/Material>
@@ -33,11 +38,17 @@
 #include <osgUtil/Optimizer>
 #include <osgDB/ReadFile>
 
+/**
+ * vrj includes
+ */
 #include <gmtl/Vec.h>
 #include <gmtl/Coord.h>
 #include <gmtl/Xforms.h>
 #include <gmtl/Math.h>
 
+/**
+ * osgBullet includes
+ */
 #include <osgwTools/AbsoluteModelTransform.h>
 
 #include <osgbDynamics/GroundPlane.h>
@@ -46,48 +57,50 @@
 #include <osgbCollision/RefBulletObject.h>
 #include <osgbCollision/Utils.h>
 
-#include <osgbDynamics/TripleBuffer.h>
-#include <osgbDynamics/PhysicsThread.h>
-
 #include <sstream>
 
-osgbDynamics::TripleBuffer tBuf;
-osgbDynamics::MotionStateList msl;
-osgbDynamics::PhysicsThread* pt(NULL);
-
-VrjOsgBullet::VrjOsgBullet(vrj::Kernel* kern, int& argc, char** argv)
+VrjOsgBulletApp::VrjOsgBulletApp(vrj::Kernel* kern, int& argc, char** argv)
 : vrj::osg::App(kern)
-{
-	mFileToLoad = std::string("");
-	
-	mDebugDisplay = true;
+, mFileToLoad("")
+{	
 }
 
-VrjOsgBullet::~VrjOsgBullet()
+VrjOsgBulletApp::~VrjOsgBullet()
 {
-	pt->stopPhysics();
-	pt->join();
-	delete pt;
+#ifdef VOB_PHYSICS_THREAD
+	mPhysicsThread->stopPhysics();
+	mPhysicsThread->join();
+	delete mPhysicsThread;
+#endif
 }
 
-void VrjOsgBullet::updatePhysics(float time_delta)
+void VrjOsgBulletApp::updatePhysics(float time_delta)
 {
+#ifdef VOB_DEBUG_DRAW
 	//Start drawing on the debug drawer (if any)
 	if( mDbgDraw != NULL )
 		mDbgDraw->BeginDraw();
+#endif
 	
+#ifndef VOB_PHYSICS_THREAD
 	//Step simulation according to the given time_delta
-	TripleBufferMotionStateUpdate( msl, &tBuf );
-	
+	mDynamicsWorld->stepSimulation( time_delta );
+#else
+	//Update the motion states in the triple buffer
+	TripleBufferMotionStateUpdate( mMotionStates, &mTripleBuffer );
+#endif
+
+#ifdef VOB_DEBUG_DRAW
 	//Stop drawing on the debug drawer (if any)
 	if( mDbgDraw != NULL )
 	{
 		mDynamicsWorld->debugDrawWorld();
 		mDbgDraw->EndDraw();
 	}
+#endif
 }
 
-void VrjOsgBullet::latePreFrame()
+void VrjOsgBulletApp::latePreFrame()
 {
 	gmtl::Matrix44f world_transform;
 	gmtl::invertFull(world_transform, mNavigator.getCurPos());
@@ -100,7 +113,7 @@ void VrjOsgBullet::latePreFrame()
 	vrj::osg::App::latePreFrame();
 }
 
-void VrjOsgBullet::preFrame()
+void VrjOsgBulletApp::preFrame()
 {
 	vpr::Interval cur_time = mWand->getTimeStamp();
 	vpr::Interval diff_time(cur_time-mLastPreFrameTime);
@@ -120,13 +133,13 @@ void VrjOsgBullet::preFrame()
 	mNavigator.update(time_delta);
 }
 
-void VrjOsgBullet::bufferPreDraw()
+void VrjOsgBulletApp::bufferPreDraw()
 {
 	glClearColor(0.0, 0.0, 0.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT);
 }
 
-void VrjOsgBullet::initScene()
+void VrjOsgBulletApp::initScene()
 {
 	// Initialize devices
 	const std::string wand("VJWand");
@@ -141,7 +154,7 @@ void VrjOsgBullet::initScene()
 	initSceneGraph();
 }
 
-btDynamicsWorld* VrjOsgBullet::initPhysics()
+btDynamicsWorld* VrjOsgBulletApp::initPhysics()
 {
     btDefaultCollisionConfiguration * collisionConfiguration = new btDefaultCollisionConfiguration();
     btCollisionDispatcher * dispatcher = new btCollisionDispatcher( collisionConfiguration );
@@ -155,16 +168,18 @@ btDynamicsWorld* VrjOsgBullet::initPhysics()
 	
     dynamicsWorld->setGravity( btVector3( 0, -9.8, 0 ) );
 
-	tBuf.resize( 16384 );
-    pt = new osgbDynamics::PhysicsThread( dynamicsWorld, &tBuf );
+#ifdef VOB_PHYSICS_THREAD
+	mTripleBuffer.resize( 16384 );
+    mPhysicsThread = new osgbDynamics::PhysicsThread( dynamicsWorld, &mTripleBuffer );
 	
-	pt->setProcessorAffinity( 0 );
-    pt->start();
-	
+	mPhysicsThread->setProcessorAffinity( 0 );
+    mPhysicsThread->start();
+#endif
+
     return( dynamicsWorld );
 }
 
-void VrjOsgBullet::initSceneGraph()
+void VrjOsgBulletApp::initSceneGraph()
 {
 	// mRootNode
 	//         \-- mNavTrans -- mModelTrans -- (AbsoluteTransform) -- mModel
@@ -211,18 +226,17 @@ void VrjOsgBullet::initSceneGraph()
 	// Add the transform to the tree
 	mNavTrans->addChild(mModelTrans.get());
 	
+#ifdef VOB_DEBUG_DRAW
 	//Create a debug display and add it to the root
-    if( mDebugDisplay )
-    {
-        mDbgDraw = new osgbCollision::GLDebugDrawer();
-        mDbgDraw->setDebugMode( ~btIDebugDraw::DBG_DrawText );
-		mDynamicsWorld->setDebugDrawer( mDbgDraw );
-        mRootNode->addChild( mDbgDraw->getSceneGraph() );
-    }
+	mDbgDraw = new osgbCollision::GLDebugDrawer();
+	mDbgDraw->setDebugMode( ~btIDebugDraw::DBG_DrawText );
+	mDynamicsWorld->setDebugDrawer( mDbgDraw );
+	mRootNode->addChild( mDbgDraw->getSceneGraph() );
+#endif
 }
 
 //Creates a rigid object from the given node, attachs it to a new AbsoluteModelTransform and attachs the latter to the given parent
-btRigidBody* VrjOsgBullet::createObject( osg::Node* node, osg::Group* parent, const osg::Matrix& m )
+btRigidBody* VrjOsgBulletApp::createObject( osg::Node* node, osg::Group* parent, const osg::Matrix& m )
 {
 	//Bullet should control the absolute transform
     osgwTools::AbsoluteModelTransform* mt = new osgwTools::AbsoluteModelTransform;
@@ -241,10 +255,12 @@ btRigidBody* VrjOsgBullet::createObject( osg::Node* node, osg::Group* parent, co
 	cr->_restitution = 1.f;
     btRigidBody* rb = osgbDynamics::createRigidBody( cr.get() );
 	
+#ifdef VOB_PHYSICS_THREAD
 	// Set up for multithreading and triple buffering.
     osgbDynamics::MotionState* motion = static_cast< osgbDynamics::MotionState* >( rb->getMotionState() );
-    motion->registerTripleBuffer( &tBuf );
-    msl.insert( motion );
+    motion->registerTripleBuffer( &mTripleBuffer );
+    mMotionStates.insert( motion );
+#endif
 		
 	//Save the rigid body as userData of the absoluteModelTransform
     mt->setUserData( new osgbCollision::RefRigidBody( rb ) );
