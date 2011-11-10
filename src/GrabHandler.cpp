@@ -22,7 +22,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include "GrabHandler.h"
-#include "VrjOsgBullet.h"
+#include "VrjOsgBulletApp.h"
 #include <osgbCollision/RefBulletObject.h>
 #include <osgbCollision/Utils.h>
 #include <osgbDynamics/MotionState.h>
@@ -40,7 +40,7 @@
 
 namespace ii_vrac
 {
-	GrabHandler::GrabHandler( btDynamicsWorld* dw, VrjOsgBullet* mainApp )
+	GrabHandler::GrabHandler( btDynamicsWorld* dw, VrjOsgBulletApp* mainApp )
 		: _dw( dw ),
 		_mainApp( mainApp ),
 		_constraint( NULL ),

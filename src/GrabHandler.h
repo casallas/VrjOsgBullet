@@ -29,7 +29,7 @@
 #include <osg/Vec4>
 
 // Forward declaring
-class VrjOsgBullet;
+class VrjOsgBulletApp;
 
 namespace osgbDynamics {
 	class PhysicsThread;
@@ -68,7 +68,7 @@ namespace ii_vrac
 		\param scene Scene graph used for picking. \c scene must be a Camera node
 		to allow DragHandler to properly convert from window to world coordinates
 		during selection and dragging. */
-		GrabHandler( btDynamicsWorld* dw, VrjOsgBullet* mainApp );
+		GrabHandler( btDynamicsWorld* dw, VrjOsgBulletApp* mainApp );
 
 		/** \brief Handle events.
 
@@ -93,7 +93,7 @@ namespace ii_vrac
 		bool pick( float wx, float wy, float wz );
 
 		btDynamicsWorld* _dw;
-		VrjOsgBullet* _mainApp;
+		VrjOsgBulletApp* _mainApp;
 
 		btPoint2PointConstraint* _constraint;
 		osgbDynamics::MotionState* _constrainedMotionState;
