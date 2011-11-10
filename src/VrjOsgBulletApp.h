@@ -91,8 +91,10 @@ class VrjOsgBulletApp : public vrj::osg::App
 public:
 	VrjOsgBulletApp(vrj::Kernel* kern, int& argc, char** argv);
 	
-	//If using a physics thread, stops the physics thread, joins and deletes it
 	virtual ~VrjOsgBulletApp();
+	
+	//If using a physics thread, stops the physics thread, joins and deletes it
+	virtual void exit();
 	
 	/**
 	 * Execute any initialization needed before the API is started.

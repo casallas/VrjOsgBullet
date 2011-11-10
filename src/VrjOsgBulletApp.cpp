@@ -67,6 +67,10 @@ VrjOsgBulletApp::VrjOsgBulletApp(vrj::Kernel* kern, int& argc, char** argv)
 
 VrjOsgBulletApp::~VrjOsgBulletApp()
 {
+}
+
+void VrjOsgBulletApp::exit()
+{
 #ifdef VOB_PHYSICS_THREAD
 	mPhysicsThread->stopPhysics();
 	mPhysicsThread->join();
