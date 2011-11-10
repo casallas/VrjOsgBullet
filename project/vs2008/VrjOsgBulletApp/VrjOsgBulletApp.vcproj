@@ -42,7 +42,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="&quot;$(SolutionDir)..\..\src.&quot;;&quot;$(OSG_ROOT)\include&quot;;&quot;$(VJ_DEPS_DIR)\include&quot;;&quot;$(VJ_BASE_DIR)\include&quot;;&quot;$(BULLET_INCLUDE_DIR)&quot;;&quot;$(OSG_WORKS_ROOT)\include&quot;;&quot;$(OSG_BULLET_ROOT)\include&quot;"
-				PreprocessorDefinitions="CPPDOM_DYN_LINK;BOOST_ALL_DYN_LINK;JUGGLER_DEBUG;_CONSOLE;WIN32;_DEBUG;VOB_PHYSICS_THREAD"
+				PreprocessorDefinitions="CPPDOM_DYN_LINK;BOOST_ALL_DYN_LINK;JUGGLER_DEBUG;_CONSOLE;WIN32;_DEBUG;VOB_DEBUG_DRAW"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
