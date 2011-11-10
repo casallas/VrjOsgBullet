@@ -86,14 +86,14 @@ namespace ii_vrac
 	protected:
 		~GrabHandler();
 
-		/** \brief Picking support.
-		\param wx Normalized (-1.0 to 1.0) x mouse position
-		\param wy Normalized (-1.0 to 1.0) Y mouse position
-		*/
-		bool pick( float wx, float wy, float wz );
+		///True if the wand intersects an object, false otherwise
+		bool intersects( const btVector3& wand_pos );
 
 		btDynamicsWorld* _dw;
 		VrjOsgBulletApp* _mainApp;
+		
+		///The last position of the wand
+		btVector3 _lastPos;
 
 		btPoint2PointConstraint* _constraint;
 		osgbDynamics::MotionState* _constrainedMotionState;
