@@ -21,8 +21,8 @@
 		0D47BF6B14431FA200BD1150 /* libvpr-2_2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D47BF6A14431FA200BD1150 /* libvpr-2_2.dylib */; };
 		0D47BF6F14431FF700BD1150 /* libOpenThreads.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D47BF6E14431FF700BD1150 /* libOpenThreads.dylib */; };
 		0D4E40DE1465212300067968 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D4E40D91465212300067968 /* main.cpp */; };
-		0D4E40DF1465212300067968 /* VrjOsgBullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D4E40DB1465212300067968 /* VrjOsgBullet.cpp */; };
 		0D4E43A714691BFE00067968 /* libosgAnimation.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4E43A614691BFE00067968 /* libosgAnimation.dylib */; };
+		0D4FE258146BA4B40079C4EC /* VrjOsgBulletApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D4FE256146BA4B40079C4EC /* VrjOsgBulletApp.cpp */; };
 		0DD10BF91442FAFE00914068 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DD10BF81442FAFE00914068 /* OpenGL.framework */; };
 		0DD8ABCE1450849500E7F29F /* libosgbCollision.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DD8ABBD1450818600E7F29F /* libosgbCollision.dylib */; };
 		0DD8ABCF1450849500E7F29F /* libosgbDynamics.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DD8ABBE1450818600E7F29F /* libosgbDynamics.dylib */; };
@@ -49,9 +49,9 @@
 		0D47BF6E14431FF700BD1150 /* libOpenThreads.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libOpenThreads.dylib; path = /usr/local/lib/libOpenThreads.dylib; sourceTree = "<absolute>"; };
 		0D4E40D91465212300067968 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		0D4E40DA1465212300067968 /* nav.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nav.h; sourceTree = "<group>"; };
-		0D4E40DB1465212300067968 /* VrjOsgBullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VrjOsgBullet.cpp; sourceTree = "<group>"; };
-		0D4E40DC1465212300067968 /* VrjOsgBullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VrjOsgBullet.h; sourceTree = "<group>"; };
 		0D4E43A614691BFE00067968 /* libosgAnimation.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libosgAnimation.dylib; path = /usr/local/lib/libosgAnimation.dylib; sourceTree = "<absolute>"; };
+		0D4FE256146BA4B40079C4EC /* VrjOsgBulletApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VrjOsgBulletApp.cpp; sourceTree = "<group>"; };
+		0D4FE257146BA4B40079C4EC /* VrjOsgBulletApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VrjOsgBulletApp.h; sourceTree = "<group>"; };
 		0DD10BF81442FAFE00914068 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		0DD8ABBD1450818600E7F29F /* libosgbCollision.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libosgbCollision.dylib; path = /usr/local/lib/libosgbCollision.dylib; sourceTree = "<absolute>"; };
 		0DD8ABBE1450818600E7F29F /* libosgbDynamics.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libosgbDynamics.dylib; path = /usr/local/lib/libosgbDynamics.dylib; sourceTree = "<absolute>"; };
@@ -99,10 +99,10 @@
 		0D47BE9E1442FC6A00BD1150 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				0D4FE256146BA4B40079C4EC /* VrjOsgBulletApp.cpp */,
+				0D4FE257146BA4B40079C4EC /* VrjOsgBulletApp.h */,
 				0D4E40D91465212300067968 /* main.cpp */,
 				0D4E40DA1465212300067968 /* nav.h */,
-				0D4E40DB1465212300067968 /* VrjOsgBullet.cpp */,
-				0D4E40DC1465212300067968 /* VrjOsgBullet.h */,
 			);
 			name = src;
 			path = ../../src;
@@ -274,7 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D4E40DE1465212300067968 /* main.cpp in Sources */,
-				0D4E40DF1465212300067968 /* VrjOsgBullet.cpp in Sources */,
+				0D4FE258146BA4B40079C4EC /* VrjOsgBulletApp.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +342,10 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_SYMBOL_SEPARATION = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VOB_PHYSICS_THREAD,
+					VOB_DEBUG_DRAW,
+				);
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
