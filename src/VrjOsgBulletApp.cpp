@@ -65,7 +65,7 @@ VrjOsgBulletApp::VrjOsgBulletApp(vrj::Kernel* kern, int& argc, char** argv)
 {	
 }
 
-VrjOsgBulletApp::~VrjOsgBullet()
+VrjOsgBulletApp::~VrjOsgBulletApp()
 {
 #ifdef VOB_PHYSICS_THREAD
 	mPhysicsThread->stopPhysics();

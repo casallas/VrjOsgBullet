@@ -79,7 +79,7 @@
 
 #ifdef VOB_PHYSICS_THREAD
 #include <osgbDynamics/TripleBuffer.h>
-#include <osgbDynamics/PhysicsThreaad.h>
+#include <osgbDynamics/PhysicsThread.h>
 #include <osgbDynamics/MotionState.h>
 #endif
 
@@ -92,7 +92,7 @@ public:
 	VrjOsgBulletApp(vrj::Kernel* kern, int& argc, char** argv);
 	
 	//If using a physics thread, stops the physics thread, joins and deletes it
-	virtual ~VrjOsgBullet();
+	virtual ~VrjOsgBulletApp();
 	
 	/**
 	 * Execute any initialization needed before the API is started.
@@ -201,15 +201,14 @@ protected:
 	btDynamicsWorld* mDynamicsWorld;
 
 #ifdef VOB_PHYSICS_THREAD
-	osgbDynamics::TripleBuffer mTripleBuffer
-	osgbDynamics::MotionStateList mMotionSta
-	osgbDynamics::PhysicsThread* mPhysicsThr
+	osgbDynamics::TripleBuffer mTripleBuffer;
+	osgbDynamics::MotionStateList mMotionStates;
+	osgbDynamics::PhysicsThread* mPhysicsThread;
 #endif
 	
 #ifdef VOB_DEBUG_DRAW
 	///Allows to see if the dynamics world matches the scene graph
 	osgbCollision::GLDebugDrawer* mDbgDraw;
-	bool mDebugDisplay;
 #endif
 	
 #ifdef TWEEK_HAVE_CXX
