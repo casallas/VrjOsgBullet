@@ -164,6 +164,10 @@ void VrjOsgBulletApp::initScene()
 
 	//Init the grab handler
 	mGrabHandler = new ii_vrac::GrabHandler( mDynamicsWorld, this );
+
+#ifdef VOB_PHYSICS_THREAD
+	mGrabHandler->setThreadedPhysicsSupport(mPhysicsThread);
+#endif
 }
 
 btDynamicsWorld* VrjOsgBulletApp::initPhysics()
