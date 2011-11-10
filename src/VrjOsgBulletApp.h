@@ -60,11 +60,6 @@
  * Physics stuff
  */
 
-//Multithreading and debug draw don't like each other on Visual Studio
-#if defined(_MSC_VER) && defined(VOB_PHYSICS_THREAD)
-#undef VOB_DEBUG_DRAW
-#endif
-
 /**
  * bullet includes
  */
