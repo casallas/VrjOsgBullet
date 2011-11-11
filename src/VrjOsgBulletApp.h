@@ -22,51 +22,76 @@
  * (COPYING) and the GNU Lesser General Public License (COPYING.LESSER)
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef _OSG_NAV_
-#define _OSG_NAV_
+#ifndef VRJ_OSG_BULLET_APP
+#define VRJ_OSG_BULLET_APP
 
-#include <vrj/vrjConfig.h>
-
-#include <iostream>
-#include <iomanip>
+/**
+ * std includes
+ */
 #include <math.h>
 
-#include <gadget/Type/PositionInterface.h>
-#include <gadget/Type/AnalogInterface.h>
-#include <gadget/Type/DigitalInterface.h>
-
-//OSG  includes
+/**
+ * osg includes
+ */
 #include <osg/Matrix>
 #include <osg/Transform>
 #include <osg/MatrixTransform>
 
 #include <osgUtil/SceneView>
 
+/**
+ * vrj includes
+ */
+#include <vrj/vrjConfig.h>
+
+#include <gadget/Type/PositionInterface.h>
+#include <gadget/Type/AnalogInterface.h>
+#include <gadget/Type/DigitalInterface.h>
+
 #ifdef TWEEK_HAVE_CXX
 #include <tweek/CORBA/CorbaManager.h>
 #endif
 
-#include "nav.h"
-
 #include <vrj/Draw/OSG/App.h>
 
+#include "nav.h"
+
+/**
+ * Physics stuff
+ */
+
+/**
+ * bullet includes
+ */
 #include <btBulletDynamicsCommon.h>
+
+/**
+ * osgBullet includes
+ */
+#ifdef VOB_DEBUG_DRAW
 #include <osgbCollision/GLDebugDrawer.h>
+#endif
+
+#ifdef VOB_PHYSICS_THREAD
+#include <osgbDynamics/TripleBuffer.h>
+#include <osgbDynamics/PhysicsThread.h>
+#include <osgbDynamics/MotionState.h>
+#endif
 
 #include "GrabHandler.h"
 
 /**
  * Demonstration vrjuggler+osgBullet application class.
  */
-class VrjOsgBullet : public vrj::osg::App
+class VrjOsgBulletApp : public vrj::osg::App
 {
 public:
-	VrjOsgBullet(vrj::Kernel* kern, int& argc, char** argv);
+	VrjOsgBulletApp(vrj::Kernel* kern, int& argc, char** argv);
 	
-	virtual ~VrjOsgBullet()
-	{
-		/* Do nothing. */ ;
-	}
+	virtual ~VrjOsgBulletApp();
+	
+	//If using a physics thread, stops the physics thread, joins and deletes it
+	virtual void exit();
 	
 	/**
 	 * Execute any initialization needed before the API is started.
@@ -152,7 +177,7 @@ public:
 		// Put your post frame computations here.
 	}
 	
-	void setModelFileName(std::string filename)
+	inline void setModelFileName(const std::string& filename)
 	{
 		mFileToLoad = filename;
 	}
@@ -172,11 +197,18 @@ public:
 	vpr::Interval mLastPreFrameTime;
 	
 	//Physics Specifics
-	btDynamicsWorld* mDynamicsWorld;	
+	btDynamicsWorld* mDynamicsWorld;
+
+#ifdef VOB_PHYSICS_THREAD
+	osgbDynamics::TripleBuffer mTripleBuffer;
+	osgbDynamics::MotionStateList mMotionStates;
+	osgbDynamics::PhysicsThread* mPhysicsThread;
+#endif
+	
+#ifdef VOB_DEBUG_DRAW
 	///Allows to see if the dynamics world matches the scene graph
 	osgbCollision::GLDebugDrawer* mDbgDraw;
-	bool mDebugDisplay;
-
+#endif
 	ii_vrac::GrabHandler* mGrabHandler;
 	
 #ifdef TWEEK_HAVE_CXX

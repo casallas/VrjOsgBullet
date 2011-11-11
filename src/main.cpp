@@ -24,19 +24,25 @@
  *
  *************** <auto-copyright.pl END do not edit this line> ***************/
 
+/**
+ *  std includes
+ */
 #include <cstdlib>
-#include <VrjOsgBullet.h>
 
-// --- Lib Stuff --- //
+/**
+ *  App-specific includes
+ */
+#include <VrjOsgBulletApp.h>
+
+/**
+ *  vrj includes
+ */
 #include <vrj/Kernel/Kernel.h>
-
-//#define OSG_USE_IO_DOT_H
-
 
 int main(int argc, char* argv[])
 {
    vrj::Kernel* kernel = vrj::Kernel::instance();  // Get the kernel
-   VrjOsgBullet* application = new VrjOsgBullet(kernel, argc, argv);             // Instantiate an instance of the app
+   VrjOsgBulletApp* application = new VrjOsgBulletApp(kernel, argc, argv);             // Instantiate an instance of the app
 
    if ( argc <= 2 )
    {
