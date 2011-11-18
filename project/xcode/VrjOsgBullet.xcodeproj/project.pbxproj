@@ -23,6 +23,7 @@
 		0D4E40DE1465212300067968 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D4E40D91465212300067968 /* main.cpp */; };
 		0D4E43A714691BFE00067968 /* libosgAnimation.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4E43A614691BFE00067968 /* libosgAnimation.dylib */; };
 		0D4FE258146BA4B40079C4EC /* VrjOsgBulletApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D4FE256146BA4B40079C4EC /* VrjOsgBulletApp.cpp */; };
+		0DBF1C94146D47E700A58FAC /* GrabHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DBF1C92146D47E700A58FAC /* GrabHandler.cpp */; };
 		0DD10BF91442FAFE00914068 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DD10BF81442FAFE00914068 /* OpenGL.framework */; };
 		0DD8ABCE1450849500E7F29F /* libosgbCollision.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DD8ABBD1450818600E7F29F /* libosgbCollision.dylib */; };
 		0DD8ABCF1450849500E7F29F /* libosgbDynamics.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DD8ABBE1450818600E7F29F /* libosgbDynamics.dylib */; };
@@ -52,6 +53,8 @@
 		0D4E43A614691BFE00067968 /* libosgAnimation.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libosgAnimation.dylib; path = /usr/local/lib/libosgAnimation.dylib; sourceTree = "<absolute>"; };
 		0D4FE256146BA4B40079C4EC /* VrjOsgBulletApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VrjOsgBulletApp.cpp; sourceTree = "<group>"; };
 		0D4FE257146BA4B40079C4EC /* VrjOsgBulletApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VrjOsgBulletApp.h; sourceTree = "<group>"; };
+		0DBF1C92146D47E700A58FAC /* GrabHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GrabHandler.cpp; sourceTree = "<group>"; };
+		0DBF1C93146D47E700A58FAC /* GrabHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrabHandler.h; sourceTree = "<group>"; };
 		0DD10BF81442FAFE00914068 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		0DD8ABBD1450818600E7F29F /* libosgbCollision.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libosgbCollision.dylib; path = /usr/local/lib/libosgbCollision.dylib; sourceTree = "<absolute>"; };
 		0DD8ABBE1450818600E7F29F /* libosgbDynamics.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libosgbDynamics.dylib; path = /usr/local/lib/libosgbDynamics.dylib; sourceTree = "<absolute>"; };
@@ -99,6 +102,8 @@
 		0D47BE9E1442FC6A00BD1150 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				0DBF1C92146D47E700A58FAC /* GrabHandler.cpp */,
+				0DBF1C93146D47E700A58FAC /* GrabHandler.h */,
 				0D4FE256146BA4B40079C4EC /* VrjOsgBulletApp.cpp */,
 				0D4FE257146BA4B40079C4EC /* VrjOsgBulletApp.h */,
 				0D4E40D91465212300067968 /* main.cpp */,
@@ -275,6 +280,7 @@
 			files = (
 				0D4E40DE1465212300067968 /* main.cpp in Sources */,
 				0D4FE258146BA4B40079C4EC /* VrjOsgBulletApp.cpp in Sources */,
+				0DBF1C94146D47E700A58FAC /* GrabHandler.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
