@@ -62,7 +62,15 @@
 VrjOsgBulletApp::VrjOsgBulletApp(vrj::Kernel* kern, int& argc, char** argv)
 : vrj::osg::App(kern)
 , mFileToLoad("")
-{	
+, mDynamicsWorld(NULL)
+, mGrabHandler(NULL)
+#ifdef VOB_PHYSICS_THREAD
+, mPhysicsThread(NULL)
+#endif
+#ifdef VOB_DEBUG_DRAW
+, mDbgDraw(NULL)
+#endif
+{
 }
 
 VrjOsgBulletApp::~VrjOsgBulletApp()
