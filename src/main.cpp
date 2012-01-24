@@ -32,7 +32,7 @@
 /**
  *  App-specific includes
  */
-#include <VrjOsgBulletApp.h>
+#include "VrjOsgBulletApp.h"
 
 /**
  *  vrj includes
